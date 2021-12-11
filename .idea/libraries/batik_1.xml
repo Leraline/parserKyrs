@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="batik-1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/batik-1.14" />
+      <root url="file://$USER_HOME$/Downloads/batik-1.14/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/batik-1.14/samples/tests/resources/java/sources" />
+      <root url="file://$USER_HOME$/Downloads/batik-1.14/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/batik-1.14" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/batik-1.14/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/batik-1.14/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
