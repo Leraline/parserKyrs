@@ -1,3 +1,4 @@
+import com.sun.javafx.binding.StringFormatter;
 import org.jsoup.select.Elements;
 
 import javax.swing.*;
@@ -8,7 +9,6 @@ public class Display {
 
     public static final int GRAPHIC_HIGH = 48;
     public static final int GRAPHIC_WIDTH = 164;
-    private static final int LENGTH = 8;
 
 
     public static void main(String[] args) {
@@ -31,13 +31,17 @@ public class Display {
     }
 
     private static Object[][] initCrypto() {
-        Object[][] data = new Object[LENGTH][4];
 
-        Elements prices = CoinParser.getCoinPrice(CoinParser.getPage());
-        Elements names = CoinParser.getCoinName(CoinParser.getPage());
-        Elements icons = CoinParser.getCoinLinkImages(CoinParser.getPage());
-        Elements graphs = CoinParser.getCoinWeeklyGraphic(CoinParser.getPage());
-        for (int i = 0; i < LENGTH; i++) {
+        Elements prices = CoinParser.getCoinPrice(CoinParser.getPager());
+        Elements names = CoinParser.getCoinName(CoinParser.getPager());
+        Elements icons = CoinParser.getCoinLinkImages(CoinParser.getPager());
+        Elements graphs = CoinParser.getCoinWeeklyGraphic(CoinParser.getPager());
+        System.out.println(" "+ prices.size() +" "+ names.size() +" "+ icons.size() +" "+ graphs.size() );
+        if(prices.size() != names.size() || prices.size() != icons.size() ||prices.size() != graphs.size()){
+            return new Object[][] {{}};
+        }
+        Object[][] data = new Object[prices.size()][4];
+        for (int i = 0; i < prices.size(); i++) {
             data[i][0] = Downloader.downloadImage(icons.get(i).attr("src"));
             data[i][1] = names.get(i).text();
             data[i][2] = prices.get(i).text();
